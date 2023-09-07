@@ -8,25 +8,29 @@ leia() {
 }
 
 soma() {
+    echo "Resultado:"
     echo $[$num1 + $num2]
 }
 
 subtracao() {
+    echo "Resultado:"
     echo $[$num1 - $num2]
 }
 
 multiplicacao() {
+    echo "Resultado:"
     echo $[$num1 * $num2]
 }
 
 divisao() {
+    echo "Resultado:"
     echo $[$num1 / $num2]
 }
 opc=1
 
 while [ $opc -ne 0 ]
 do
-echo "=======CALCULADORA======="
+echo "========CALCULADORA========="
 echo "Escolha a operação desejada:"
 echo "1 - Soma;"
 echo "2 - Subtração;"
@@ -56,7 +60,3 @@ echo "Opção Inválida!";;
 esac
 
 done
-
-
-
-
