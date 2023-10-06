@@ -1,1 +1,7 @@
 .vagrant/
+quizz-go/
+*.png
+*.jpg
+*.pdf
+*.odt
+

@@ -1,0 +1,57 @@
+version: '3.1'
+
+#contem as configurações para subir um ou mais containers
+services:
+#nome do container
+  wordpress:
+  #imagem base da container
+    image: wordpress
+    restart: always
+    #Encaminhamento da porta 80 do container para a porta 8081 do host
+    ports:
+      - 8081:80
+    #variaveis de ambiente do container
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: joao
+      WORDPRESS_DB_PASSWORD: '123456'
+      WORDPRESS_DB_NAME: db-wordpress
+    #definição do volume gerenciado
+    volumes:
+      - wordpress-data2:/var/www/html
+    #definição da rede do container
+    networks:
+      - wordpress
+    #definição dos limites de hardware
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
+
+  db-wordpress:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: db-wordpress
+      MYSQL_USER: joao
+      MYSQL_PASSWORD: '123456'
+      MYSQL_ROOT_PASSWORD: '123456'
+    volumes:
+      - db-data2:/var/lib/mysql
+    networks:
+      - wordpress
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
+
+#criação da rede dos containers
+networks:
+  wordpress:
+    driver: bridge
+#criação dos volumes para os containers
+volumes:
+  wordpress-data2:
+  db-data2:
