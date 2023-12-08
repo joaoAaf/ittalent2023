@@ -4,4 +4,4 @@ quizz-go/
 *.jpg
 *.pdf
 *.odt
-
+.env
